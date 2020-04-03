@@ -1,0 +1,19 @@
+version: '3'
+services:
+  schroebiedb:
+    image: mongo:latest
+    ports:
+      - "27017:27017"
+    volumes:
+      - "mongodata:/data/db"
+
+  schroebie-backend:
+    build:
+      context: .
+      dockerfile: cmd/Dockerfile
+    image: bievic/schroebie-backend
+    ports:
+    - "8080:8080"
+
+volumes:
+  mongodata:
